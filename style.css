@@ -1,0 +1,764 @@
+
+:root {
+    --primary-color: #007bff; /* A nice, subtle blue */
+    --secondary-color: #6c757d; /* Muted grey for secondary text */
+    --accent-color: #28a745; /* Green for success/highlights */
+    --text-color: #343a40; /* Dark grey for body text */
+    --light-bg: #f8f9fa; /* Light grey for section backgrounds */
+    --white: #ffffff;
+    --dark-grey: #495057;
+
+    --font-primary: 'Poppins', sans-serif; /* Modern sans-serif */
+    --font-secondary: 'Roboto', sans-serif; /* Good for body text */
+
+    --shadow-light: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+    --shadow-medium: rgba(0, 0, 0, 0.15) 0px 8px 24px;
+    --border-radius: 8px;
+    --transition-speed: 0.3s ease-in-out;
+}
+
+/* Basic Reset & Box Sizing */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+}
+
+body {
+    font-family: var(--font-secondary);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--white);
+    overflow-x: hidden; /* Prevent horizontal scroll due to animations/margins */
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color var(--transition-speed);
+}
+
+a:hover {
+    color: var(--dark-grey);
+}
+
+ul {
+    list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-primary);
+    color: var(--dark-grey);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+h2.section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+h2.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+p.section-subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+    margin-bottom: 3rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Removes extra space below images */
+}
+
+/* ------------------------------------ */
+/* 2. Utility Classes                  */
+/* ------------------------------------ */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-padding {
+    padding: 80px 0;
+}
+
+.bg-light {
+    background-color: var(--light-bg);
+}
+
+/* ------------------------------------ */
+/* 3. Buttons                          */
+/* ------------------------------------ */
+.btn {
+    display: inline-block;
+    padding: 14px 30px;
+    border-radius: var(--border-radius);
+    font-family: var(--font-primary);
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: center;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all var(--transition-speed);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background-color: var(--dark-grey);
+    transform: translateY(-3px); /* Subtle lift on hover */
+    box-shadow: var(--shadow-light);
+}
+
+.btn-outline {
+    background-color: transparent;
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-outline:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-light);
+}
+
+/* ------------------------------------ */
+/* 4. WhatsApp Float Button            */
+/* ------------------------------------ */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 30px;
+    right: 30px;
+    background-color: #25d366; /* WhatsApp green */
+    color: var(--white);
+    border-radius: 50%;
+    text-align: center;
+    font-size: 2.2rem;
+    box-shadow: var(--shadow-medium);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform var(--transition-speed);
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1) translateY(-5px); /* Pop out and lift */
+}
+
+/* ------------------------------------ */
+/* 5. Header & Navigation              */
+/* ------------------------------------ */
+.main-header {
+    background-color: var(--white);
+    padding: 20px 0;
+    box-shadow: var(--shadow-light);
+    position: sticky; /* Makes header sticky */
+    top: 0;
+    width: 100%;
+    z-index: 999; /* Ensure it stays on top */
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.main-nav ul {
+    display: flex;
+}
+
+.main-nav ul li {
+    margin-left: 30px;
+}
+
+.main-nav ul li a {
+    color: var(--dark-grey);
+    font-weight: 500;
+    font-family: var(--font-primary);
+    position: relative;
+    padding-bottom: 5px; /* Space for underline */
+}
+
+.main-nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width var(--transition-speed);
+}
+
+.main-nav ul li a:hover::after {
+    width: 100%;
+}
+
+.main-nav ul li a.active { /* For active page indication (JS needed) */
+    color: var(--primary-color);
+}
+.main-nav ul li a.active::after {
+    width: 100%;
+}
+
+
+.menu-toggle {
+    font-size: 1.8rem;
+    color: var(--dark-grey);
+    cursor: pointer;
+    display: none; /* Hidden on desktop */
+}
+
+/* ------------------------------------ */
+/* 6. Hero Section                     */
+/* ------------------------------------ */
+/* 6. Hero Section */
+.hero-section {
+    /* Apply the image as a background */
+    background:
+        linear-gradient(to right, rgba(248, 249, 250, 0.8), rgba(255, 255, 255, 0.8)), /* Subtle white overlay for text readability */
+        url('https://miro.medium.com/max/915/0*l9jKAGAU0bEJqpRS') no-repeat center center / cover; /* Your new image */
+    background-attachment: fixed; /* Optional: Makes the background image parallax */
+
+    padding: 100px 0;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    position: relative; /* Needed for text positioning */
+    z-index: 1; /* Ensure this section is above other elements if applicable */
+}
+
+.hero-section .container {
+    /* Ensure content is centered and visible */
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 2; /* Ensure content is above the background image */
+}
+
+.hero-content {
+    /* Style for the text content, making it stand out */
+    flex: none;
+    text-align: center;
+    min-width: unset;
+    max-width: 700px; /* Limit content width */
+    margin: 0 auto; /* Center content */
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.9); /* A slightly more opaque background for the content box */
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-medium); /* Use a slightly stronger shadow */
+    animation: fadeInSlideUp 1s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.hero-content h2 {
+    color: var(--primary-color); /* Primary color for heading */
+    font-size: 3.2rem; /* Slightly adjust size for impact */
+}
+
+.hero-content p {
+    color: var(--dark-grey); /* Ensure good contrast */
+    font-size: 1.2rem;
+}
+
+/* Remove or comment out the .hero-image styles as it's no longer used */
+.hero-image {
+    display: none;
+}
+
+
+
+/* Keyframe for hero content animation */
+@keyframes fadeInSlideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Keyframe for hero image animation */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* ------------------------------------ */
+/* 7. About Section                    */
+/* ------------------------------------ */
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    animation: fadeIn 1s ease-out forwards; /* Simple fade in on scroll */
+    opacity: 0;
+}
+/* Trigger fade in on scroll (requires JS or Intersection Observer) */
+.about-section.animate .about-content {
+    animation: fadeIn 1s ease-out forwards;
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: var(--dark-grey);
+}
+
+/* ------------------------------------ */
+/* 8. Services Section                 */
+/* ------------------------------------ */
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.service-item {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    text-align: center;
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.service-item:hover {
+    transform: translateY(-8px); /* Lift up on hover */
+    box-shadow: var(--shadow-medium);
+}
+
+.service-icon {
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    transition: color var(--transition-speed);
+}
+
+.service-item:hover .service-icon {
+    color: var(--accent-color); /* Change icon color on hover */
+}
+
+.service-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: var(--dark-grey);
+}
+
+.service-item p {
+    font-size: 1rem;
+    color: var(--secondary-color);
+}
+
+/* ------------------------------------ */
+/* 9. Pricing Section                  */
+/* ------------------------------------ */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    align-items: flex-start; /* Align plans at the top */
+}
+
+.price-plan {
+    background-color: var(--white);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed), border-color var(--transition-speed);
+    border: 2px solid transparent; /* For featured plan highlight */
+}
+
+.price-plan.featured-plan {
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-10px); /* Slightly raise featured plan */
+}
+
+.price-plan:hover {
+    transform: translateY(-5px); /* Lift all plans on hover */
+    box-shadow: var(--shadow-medium);
+}
+
+.price-plan h3 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.price {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--dark-grey);
+    margin-bottom: 2rem;
+}
+
+.price span {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--secondary-color);
+    display: block;
+    margin-top: 5px;
+}
+
+.price-plan ul {
+    margin-bottom: 2.5rem;
+    text-align: left;
+    flex-grow: 1; /* Allows list to take available space */
+}
+
+.price-plan ul li {
+    font-size: 1.05rem;
+    color: var(--dark-grey);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.price-plan ul li i {
+    margin-right: 10px;
+    font-size: 1.1rem;
+}
+
+.price-plan ul li .fa-check-circle {
+    color: var(--accent-color);
+}
+
+.price-plan ul li .fa-times-circle {
+    color: #dc3545; /* Red for not included features */
+}
+
+.price-plan .btn {
+    margin-top: auto; /* Push button to the bottom */
+}
+
+/* ------------------------------------ */
+/* 10. Contact Section                 */
+/* ------------------------------------ */
+.contact-content {
+    display: flex;
+    gap: 50px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.contact-form {
+    flex: 2;
+    min-width: 300px;
+    background-color: var(--white);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--dark-grey);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-family: var(--font-secondary);
+    font-size: 1rem;
+    color: var(--text-color);
+    transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-messages {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.form-messages.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.form-messages.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+
+.contact-info {
+    flex: 1;
+    min-width: 250px;
+    background-color: var(--white);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+}
+
+.contact-info h3 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.contact-info p {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    color: var(--dark-grey);
+    font-size: 1.05rem;
+}
+
+.contact-info p i {
+    margin-right: 15px;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.social-links {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-links a {
+    font-size: 1.8rem;
+    color: var(--dark-grey);
+    transition: color var(--transition-speed), transform var(--transition-speed);
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+    transform: translateY(-3px); /* Subtle lift for social icons */
+}
+
+/* ------------------------------------ */
+/* 11. Footer                          */
+/* ------------------------------------ */
+.main-footer {
+    background-color: var(--dark-grey);
+    color: var(--white);
+    text-align: center;
+    padding: 30px 0;
+    font-size: 0.9rem;
+}
+
+/* ------------------------------------ */
+/* 12. Responsive Design (Media Queries) */
+/* ------------------------------------ */
+
+/* Tablet & Smaller Desktop */
+@media (max-width: 992px) {
+    .main-header .container {
+        padding: 0 30px;
+    }
+
+    .main-nav ul {
+        display: none; /* Hide desktop nav */
+    }
+
+    .menu-toggle {
+        display: block; /* Show hamburger icon */
+    }
+
+    /* Mobile Nav (will need JS to toggle `active` class) */
+    .main-nav.active {
+        display: block;
+        position: absolute;
+        top: 80px; /* Adjust based on header height */
+        left: 0;
+        width: 100%;
+        background-color: var(--white);
+        box-shadow: var(--shadow-light);
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        z-index: 998;
+    }
+
+    .main-nav.active ul {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+
+    .main-nav.active ul li {
+        margin: 15px 0;
+    }
+
+    .hero-section .container {
+        flex-direction: column-reverse; /* Image above text on smaller screens */
+        text-align: center;
+    }
+
+    .hero-content h2 {
+        font-size: 2.8rem;
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+
+    .hero-image img {
+        max-height: 350px;
+        margin-bottom: 40px; /* Space between image and text */
+    }
+
+    .service-grid,
+    .pricing-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .contact-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-form,
+    .contact-info {
+        width: 90%; /* Take more width on smaller screens */
+        max-width: 500px;
+        padding: 30px;
+    }
+
+    .section-padding {
+        padding: 60px 0;
+    }
+
+    h2.section-title {
+        font-size: 2rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+    .main-header {
+        padding: 15px 0;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .hero-section {
+        padding: 80px 0 50px;
+    }
+
+    .hero-content h2 {
+        font-size: 2.2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .btn {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+    }
+
+    .service-item,
+    .price-plan {
+        padding: 25px;
+    }
+
+    .price {
+        font-size: 3rem;
+    }
+
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        font-size: 1.8rem;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .contact-form,
+    .contact-info {
+        padding: 25px;
+    }
+
+    .social-links a {
+        font-size: 1.5rem;
+    }
+
+    h2.section-title {
+        font-size: 1.8rem;
+    }
+
+    p.section-subtitle {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+}
